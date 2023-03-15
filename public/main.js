@@ -1,9 +1,8 @@
 let map;
 
-// Shorthand for $( document ).ready()
 $(function() {
     console.log( "banana");
-    initMap();
+    // initMap();
 });
 
 function initMap() {
