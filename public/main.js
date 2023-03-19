@@ -17,7 +17,7 @@ async function initMap() {
         zoom: 8,
     }
 
-    map = await new google.maps.Map($('#map')[0], options);
+    map = new google.maps.Map($('#map')[0], options);
 
     // map.addListener('idle', function () {
     //     updateBounds();
