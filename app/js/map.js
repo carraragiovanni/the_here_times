@@ -1,24 +1,32 @@
-async function initMap() {
-    let options = {
-        // zoomControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        streetViewControl: false,
-        rotateControl: false,
-        fullscreenControl: false,
-        // center: {
-        //     lat: parseFloat(localStorage.getItem('lat')),
-        //     lng: parseFloat(localStorage.getItem('lng'))
-        // },
-        zoom: 8,
+let map;
+let mapSettings = {};
+
+function getBrowserLocation () {
+    const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+    };
+
+    function success(pos) {
+    const crd = pos.coords;
+
+    console.log("Your current position is:");
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`Accuracy: ${crd.accuracy}`);
     }
 
-    map = await new google.maps.Map($('#map')[0], options);
+    function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
 
-    // map.addListener('idle', function () {
-    //     updateBounds();
-    //     mapIdle();
-    // });
-    
-    // infoWindow = new google.maps.InfoWindow();
+    navigator.geolocation.getCurrentPosition(success, error, options);
+}
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
 }
