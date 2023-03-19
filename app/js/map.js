@@ -1,7 +1,3 @@
-$(function() {
-    console.log("banana2");
-    initMap();
-});
 async function initMap() {
     let options = {
         // zoomControl: false,
